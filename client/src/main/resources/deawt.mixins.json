@@ -1,0 +1,17 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "me.kimovoid.deawt.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"mixins": [
+		"MinecraftAppletMixin",
+		"MinecraftMixin"
+	],
+	"client": [
+	],
+	"server": [
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
