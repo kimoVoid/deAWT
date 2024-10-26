@@ -1,4 +1,5 @@
 # deAWT mod for ornithe
+### 🔗 https://modrinth.com/mod/deawt
 Gets rid of the usage of AWT Frame/Canvas, which the game uses in legacy versions.
 <br>This mod was made and tested on Beta 1.7.3, it might work with earlier betas and even up to release 1.2.5. Feel free to port this to more versions if you want.
 <br>
