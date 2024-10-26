@@ -3,7 +3,7 @@
 	"id": "deawt",
 	"version": "${version}",
 	"name": "deAWT",
-	"description": "Removes AWT Frame and lets the game run on LWJGL",
+	"description": "Removes the usage of AWT frame",
 	"authors": [
 		"kimoVoid"
 	],

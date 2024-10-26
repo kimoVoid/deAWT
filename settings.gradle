@@ -15,5 +15,3 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-
-include ':client'
