@@ -1,7 +1,7 @@
 package me.kimovoid.deawt;
 
+import me.kimovoid.deawt.mixin.access.MinecraftAccessor;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.MinecraftApplet;
 import net.minecraft.client.crash.CrashPanel;
 import net.minecraft.client.crash.CrashSummary;
 import net.minecraft.client.render.Window;
@@ -24,7 +24,7 @@ public class NoAWTMinecraft extends Minecraft {
     private final int previousHeight;
     private final Frame awtFrame;
 
-    public NoAWTMinecraft(Component component, Canvas canvas, MinecraftApplet minecraftApplet, int w, int h, boolean fullscreen) {
+    public NoAWTMinecraft(int w, int h, boolean fullscreen) {
         super(null, null, null, w, h, fullscreen);
         this.previousWidth = w;
         this.previousHeight = h;
@@ -47,6 +47,7 @@ public class NoAWTMinecraft extends Minecraft {
                                        }
         );
         this.awtFrame.setVisible(true);
+        Display.destroy();
     }
 
     @Override
@@ -63,14 +64,7 @@ public class NoAWTMinecraft extends Minecraft {
 
     @Override
     public void toggleFullscreen() {
-        final Object fullscreen_b;
-        boolean isFullscreen;
-        try {
-            fullscreen_b = this.getClass().getDeclaredField("fullscreen").get(this);
-            isFullscreen = (boolean) fullscreen_b;
-        } catch (NoSuchFieldException | IllegalAccessException ignore) {
-            isFullscreen = Display.isFullscreen();
-        }
+        boolean isFullscreen = ((MinecraftAccessor)this).isFullscreen();
         try {
             isFullscreen = !isFullscreen;
             if (isFullscreen) {
@@ -100,10 +94,7 @@ public class NoAWTMinecraft extends Minecraft {
             Display.update();
         } catch (Exception ignored) {}
 
-        try {
-            this.getClass().getDeclaredField("fullscreen").set(this, isFullscreen);
-        } catch (NoSuchFieldException | IllegalAccessException ignore) {
-        }
+        ((MinecraftAccessor)this).setFullscreen(isFullscreen);
     }
 
     private void onResolutionChanged(int w, int h) {

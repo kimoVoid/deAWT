@@ -17,8 +17,7 @@ public class MinecraftAppletMixin extends Applet {
 
 	/**
 	 * @author kimoVoid
-	 * @reason Get that awt frame out of here.
-	 * Might be incompatible with some mods? Not sure tbh
+	 * @reason Replace AWT canvas
 	 */
 	@Overwrite
 	public void init() {
@@ -27,7 +26,7 @@ public class MinecraftAppletMixin extends Applet {
 			bl = this.getParameter("fullscreen").equalsIgnoreCase("true");
 		}
 
-		this.minecraft = new NoAWTMinecraft(null, null, null, getWidth(), getHeight(), bl);
+		this.minecraft = new NoAWTMinecraft(getWidth(), getHeight(), bl);
 
 		this.minecraft.f_3533455 = this.getDocumentBase().getHost();
 		if (this.getDocumentBase().getPort() > 0) {
