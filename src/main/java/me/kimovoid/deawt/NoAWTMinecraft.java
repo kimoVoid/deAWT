@@ -2,17 +2,12 @@ package me.kimovoid.deawt;
 
 import me.kimovoid.deawt.mixin.access.MinecraftAccessor;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.crash.CrashPanel;
 import net.minecraft.client.crash.CrashSummary;
 import net.minecraft.client.render.Window;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
-
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 /**
  * Most of this stuff was ported from <a href="https://modrinth.com/mod/gambac">Gambac</a>
@@ -22,32 +17,17 @@ public class NoAWTMinecraft extends Minecraft {
 
     private final int previousWidth;
     private final int previousHeight;
-    private final Frame awtFrame;
 
     public NoAWTMinecraft(int w, int h, boolean fullscreen) {
         super(null, null, null, w, h, fullscreen);
         this.previousWidth = w;
         this.previousHeight = h;
-        this.awtFrame = new Frame("Minecraft");
     }
 
     @Override
     public void printCrashReport(CrashSummary crashSummary) {
-        this.awtFrame.removeAll();
-        this.awtFrame.add(new CrashPanel(crashSummary), "Center");
-        this.awtFrame.validate();
-        this.awtFrame.setSize(this.width, this.height);
-        this.awtFrame.setLocationRelativeTo(null);
-        this.awtFrame.setAutoRequestFocus(true);
-        this.awtFrame.addWindowListener(new WindowAdapter() {
-                                           public void windowClosing(WindowEvent we) {
-                                               awtFrame.dispose();
-                                               System.exit(1);
-                                           }
-                                       }
-        );
-        this.awtFrame.setVisible(true);
-        Display.destroy();
+        this.stop();
+        System.exit(0);
     }
 
     @Override
