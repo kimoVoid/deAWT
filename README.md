@@ -1,3 +1,6 @@
+# Deprecated
+This mod has been deprecated in favor of [Reframed](https://github.com/kimoVoid/reframed), a mod for Ornithe gen2 that does this and more.
+
 # deAWT mod for ornithe
 ### 🔗 https://modrinth.com/mod/deawt
 Gets rid of the usage of AWT Frame/Canvas, which the game uses in legacy versions.
