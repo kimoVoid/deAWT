@@ -1,5 +1,5 @@
 # Deprecated
-This mod has been deprecated in favor of [Reframed](https://github.com/kimoVoid/reframed), a mod for Ornithe gen2 that does this and more.
+This mod has been deprecated. You should use [Starac](https://github.com/matthewperiut/starac) instead, a mod for Ornithe gen2 that does this and more.
 
 # deAWT mod for ornithe
 ### 🔗 https://modrinth.com/mod/deawt
